@@ -9,8 +9,12 @@ opts = get_opts()
 cv_cover = cv2.imread('../data/cv_cover.jpg')
 cv_desk = cv2.imread('../data/cv_desk.png')
 
+#nice little loop to save the picutres as I go
+for rat in np.linspace(0.5, 0.9, 3):
+    for sig in np.linspace(.1, .2, 3):
+        opts.ratio = rat
+        opts.sigma = sig
+        print("Ratio: {} - Sig: {}".format(opts.ratio, opts.sigma))
+        matches, locs1, locs2 = matchPics(cv_cover, cv_desk, opts)
+        plotMatches(cv_cover, cv_desk, matches, locs1, locs2)
 
-matches, locs1, locs2 = matchPics(cv_cover, cv_desk, opts)
-
-#display matched features
-plotMatches(cv_cover, cv_desk, matches, locs1, locs2)
