@@ -4,7 +4,7 @@ import skimage.io
 import skimage.color
 from opts import get_opts
 from matplotlib import pyplot as plt
-from helper import plotMatches
+
 #Import necessary functions
 
 from matchPics import matchPics
