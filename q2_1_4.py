@@ -16,5 +16,6 @@ for rat in np.linspace(0.5, 0.9, 3):
         opts.sigma = sig
         print("Ratio: {} - Sig: {}".format(opts.ratio, opts.sigma))
         matches, locs1, locs2 = matchPics(cv_cover, cv_desk, opts)
+        print("\tNumber: {}".format(len(matches)))
         plotMatches(cv_cover, cv_desk, matches, locs1, locs2)
 
