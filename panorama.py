@@ -23,9 +23,9 @@ locs2, descs2 = orb.detectAndCompute(right_gray,None)
 #match features
 bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
 matches = bf.match(descs1, descs2)
-dmatches = sorted(matches, key = lambda x:x.distance)#sort best at top
-matchedLocs1 = np.array([locs1[match.queryIdx].pt for match in dmatches[:500]])#take 500 best matches
-matchedLocs2 = np.array([locs2[match.trainIdx].pt for match in dmatches[:500]])
+sortedMatches = sorted(matches, key = lambda x:x.distance)#sort best at top
+matchedLocs1 = np.array([locs1[match.queryIdx].pt for match in sortedMatches[:500]])#take 500 best matches
+matchedLocs2 = np.array([locs2[match.trainIdx].pt for match in sortedMatches[:500]])
 
 #find homography that translates left to padded right
 H1to2, _ = cv2.findHomography(matchedLocs1, matchedLocs2, cv2.RANSAC, 20.0)
